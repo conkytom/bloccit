@@ -17,6 +17,16 @@ posts = Post.all
     )
 end
 
+Post.find_or_create_by!(
+        title: "This is the one and only, original and lonely",
+        body: "This is the one and only, original and lonely. This is the one an only, original and lonely. This is the one an only, original and lonely"
+)
+
+Comment.find_or_create_by!(
+        post: posts.find(51),
+        body: "Cooooooment, comment comment comment... comment.  Well I think comment comment comment"
+)
+
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
