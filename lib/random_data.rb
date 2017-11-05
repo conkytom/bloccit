@@ -23,4 +23,13 @@ module RandomData
         letters.shuffle!
         letters[0,rand(3..8)].join
     end
+
+    def self.random_bool
+        bool = rand(0..1)
+        if bool == 0
+            bool = false
+        elsif bool == 1
+            bool = true
+        end
+    end
 end
