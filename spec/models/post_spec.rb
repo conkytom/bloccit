@@ -74,4 +74,20 @@ RSpec.describe Post, type: :model do
           end
         end
     end
+
+    describe "#create_vote" do
+        it "adds 1 upvote to post" do
+            expect(post.up_votes).to eq(1)
+        end
+
+        it "calls create_vote when a new post is made" do
+            post = topic.posts.new(title: title, body: body, user: user)
+            expect(post).to receive(:create_vote)
+            post.save
+        end
+
+        it "links the first vote to the user that made it" do
+            expect(post.votes.first.user).to eq(post.user)
+        end
+    end
 end
