@@ -48,4 +48,6 @@ source 'https://rubygems.org'
 
   #used for encrytping passwords
   gem 'bcrypt'
+
+  gem 'figaro', '1.0'
  end

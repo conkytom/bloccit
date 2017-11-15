@@ -3,4 +3,13 @@ class Comment < ApplicationRecord
   belongs_to :user
   validates :body, length: {minimum: 5 }, presence: true
   validates :user, presence: true
+
+  after_create :send_favortie_emails
+
+  private
+  def send_favortie_emails
+      post.favorites.each do |favorite|
+          FavoriteMailer.new_comment(favorite.user, post, self).deliver_now
+      end
+  end
 end
